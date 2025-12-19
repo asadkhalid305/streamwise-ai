@@ -149,7 +149,7 @@ export default function Home() {
               </div>
             ) : (
               /* Show plain text response if no items */
-              <div className="bg-white dark:bg-[#2D2D2D] rounded-xl border border-gray-200 dark:border-[#3A3A3A] p-6 transition-colors">
+              <div>
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
                   Response
                 </h2>

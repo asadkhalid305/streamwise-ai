@@ -21,9 +21,13 @@ export const formatResponse = (result: any): RecommendResponse => {
       try {
         let parsed: any = output;
 
-        // If output is a string, parse it
+        // If output is a string, check if it looks like JSON before parsing
         if (typeof output === "string") {
-          parsed = JSON.parse(output);
+          const trimmed = output.trim();
+          // Only parse if it starts with { or [ (looks like JSON)
+          if (trimmed.startsWith("{") || trimmed.startsWith("[")) {
+            parsed = JSON.parse(output);
+          }
         }
 
         // Handle Ranker Agent output format: { recommendations: [...] }
