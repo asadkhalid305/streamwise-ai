@@ -6,7 +6,6 @@ import rankerAgent from "./rankerAgent";
 const parserAgent = Agent.create({
   name: "Parser agent",
   instructions: PARSER_AGENT_INSTRUCTIONS,
-  modelSettings: { toolChoice: "required" },
   tools: [catalogSearchTool],
   handoffs: [rankerAgent],
 });

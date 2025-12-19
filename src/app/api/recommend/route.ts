@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import type { RecommendRequest, RecommendResponse } from "@/types/api";
 import { executeMultiAgentSystem } from "@/lib/agents-sdk/agents";
 import { formatResponse } from "@/utils/responseFormatter";
+import {
+  InputGuardrailTripwireTriggered,
+  OutputGuardrailTripwireTriggered,
+} from "@openai/agents";
 
 export async function POST(request: NextRequest) {
   try {
@@ -26,6 +30,32 @@ export async function POST(request: NextRequest) {
       // Format the response
       response = formatResponse(result);
     } catch (error) {
+      // Handle input guardrail errors
+      if (error instanceof InputGuardrailTripwireTriggered) {
+        console.log("Input guardrail triggered:", error.name);
+        return NextResponse.json(
+          {
+            error:
+              "Your request could not be processed due to content policy violations.",
+            details: error.message,
+          },
+          { status: 400 }
+        );
+      }
+
+      // Handle output guardrail errors
+      if (error instanceof OutputGuardrailTripwireTriggered) {
+        console.log("Output guardrail triggered:", error.name);
+        return NextResponse.json(
+          {
+            error:
+              "The response could not be generated due to validation issues.",
+            details: error.message,
+          },
+          { status: 500 }
+        );
+      }
+
       console.error("Error executing multi-agent system:", error);
       return NextResponse.json(
         { error: "Internal server error" },

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import type { RecommendResponse, RecommendItem } from "@/types/api";
 import MovieCard from "@/components/MovieCard";
-import { CornerDownLeft } from "lucide-react";
+import { CornerDownLeft, Loader } from "lucide-react";
 
 export default function Home() {
   const [message, setMessage] = useState("");
@@ -88,7 +88,10 @@ export default function Home() {
               className="mt-4 w-full bg-gray-800 dark:bg-white text-white dark:text-black py-3 px-4 rounded-lg hover:bg-gray-900 dark:hover:bg-gray-100 disabled:bg-gray-400 dark:disabled:bg-gray-600 dark:disabled:text-white disabled:cursor-not-allowed transition-colors font-medium flex items-center justify-center gap-2"
             >
               {loading ? (
-                "Recommending..."
+                <>
+                  Recommending
+                  <Loader size={16} className="opacity-70" />
+                </>
               ) : (
                 <>
                   Recommend
@@ -183,7 +186,9 @@ export default function Home() {
                     AI Model
                   </div>
                   <div className="text-sm font-mono text-gray-900 dark:text-gray-100">
-                    {response.metadata.model}
+                    {response.metadata.model ||
+                      process.env.NEXT_PUBLIC_DEFAULT_MODEL ||
+                      "N/A"}
                   </div>
                 </div>
 

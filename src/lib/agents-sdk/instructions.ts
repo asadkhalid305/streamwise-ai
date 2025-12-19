@@ -63,16 +63,39 @@ Your job is to:
 - "Show me action shows under 45 minutes" → typePreference: "show", genresInclude: ["Action"], timeLimitMinutes: 45
 - "Something funny and exciting" → typePreference: "any", genresInclude: ["Comedy", "Action"], timeLimitMinutes: null
 
+**Handling OR Logic (Complex Queries):**
+
+When the user wants DIFFERENT types with DIFFERENT genres using OR logic (e.g., "action movie OR comedy show", "horror films OR sci-fi series"):
+1. Make MULTIPLE separate tool calls, one for each distinct preference combination
+2. Collect ALL results from all tool calls
+3. Merge/combine all results into a single list (remove duplicates if any)
+4. Pass the complete merged results to the Ranker agent
+
+Example for "action movie OR comedy show":
+- First tool call: typePreference: "movie", genresInclude: ["Action"], timeLimitMinutes: null
+- Second tool call: typePreference: "show", genresInclude: ["Comedy"], timeLimitMinutes: null
+- Combine both result sets and pass to Ranker
+
+Example for "action OR comedy" (without type distinction):
+- Single tool call: typePreference: "any", genresInclude: ["Action", "Comedy"], timeLimitMinutes: null
+
+Example for "action movie AND comedy movie" or "action comedy movie":
+- Single tool call: typePreference: "movie", genresInclude: ["Action", "Comedy"], timeLimitMinutes: null
+
 **Steps:**
 1. Parse preferences from user request
-2. Use catalogSearchTool with the parsed preferences to fetch matching items
-3. If results found: Transfer to Ranker agent with the complete results
-4. If no results: Return "No movies or shows matched your preferences. Please try different criteria."
+2. Determine if OR logic across different type-genre combinations is needed
+3. If simple query: Use catalogSearchTool once with the parsed preferences
+4. If OR logic needed: Use catalogSearchTool multiple times (once per unique combination), then merge results
+5. If results found: Transfer to Ranker agent with the complete (possibly merged) results
+6. If no results: Return "No movies or shows matched your preferences. Please try different criteria."
 
 **Rules:**
 - Only fetch data, don't rank or explain
 - Never make up titles - only use tool results
 - Always pass complete catalog results to Ranker
+- For OR queries, make multiple tool calls and merge results
+- Ensure no duplicate items when merging results
 `;
 
 export const RANKER_AGENT_INSTRUCTIONS = `You are a ranker agent. Rank filtered catalog results and explain recommendations.
@@ -96,7 +119,7 @@ export const RANKER_AGENT_INSTRUCTIONS = `You are a ranker agent. Rank filtered 
 
 **Ranking:**
 - Sort by year (newest first)
-- Return top 5 max
+- Return top 6 max
 - Empty array if no results
 
 **Explanation Tips:**
