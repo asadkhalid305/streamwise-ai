@@ -229,8 +229,9 @@ npm install
 
 # Set up environment variables
 cp .env.local.example .env.local
-# Edit .env.local and add your OpenAI API key:
+# Edit .env.local and add your OpenAI API key and OpenAI model:
 # OPENAI_API_KEY="sk-proj-your-actual-api-key-here"
+# OPENAI_DEFAULT_MODEL=gpt-4.1-mini
 
 # Run the development server
 npm run dev
