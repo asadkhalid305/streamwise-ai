@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { RecommendRequest, RecommendResponse } from "@/types/api";
-import { executeMultiAgentSystem } from "@/lib/agents-sdk/agents";
-import { formatResponse } from "@/utils/responseFormatter";
 
 export async function POST(request: NextRequest) {
   // Parse the request body

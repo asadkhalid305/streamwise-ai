@@ -8,34 +8,24 @@
 
 ### Git Branching Strategy
 
-This repository uses three branches:
+This repository uses three main branches:
 
-- **`main`** - Basic project setup with a single empty endpoint (minimal starting point)
-- **`template`** - Workshop starting branch with project structure and TODOs
-- **`solution`** - Complete implementation built on top of `template` with all features working
+- **`main`** - Base branch with the workshop template (synced with `live`)
+- **`live`** - Working branch for the workshop (use this during development)
+- **`solution`** - Complete implementation with all code working
 
-**Recommended approach for the workshop:**
-
-Create your own branch from `template` to work independently:
+**For the workshop, you should work on the `live` branch:**
 
 ```bash
-# Create and switch to your own working branch
-git checkout template
-git checkout -b my-workshop
+# Switch to the live branch
+git checkout live
 ```
 
-**Why create a new branch from `template`?**
+**Why use `live` instead of `main`?**
 
-- Keeps the `template` branch clean as a reference
-- Allows you to start fresh or try different approaches without affecting the template
-- You can always compare your work with the original template
-- Enables experimenting with multiple solutions independently
-
-**Alternative:** If you prefer, you can work directly on the `template` branch:
-
-```bash
-git checkout template
-```
+- Keeps your `main` branch clean as a reference
+- Allows you to experiment and create feature branches from `main` later
+- The `live` and `main` branches have the same starting content
 
 **To view the completed solution:**
 
