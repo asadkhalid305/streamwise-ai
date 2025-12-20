@@ -1,0 +1,339 @@
+{
+  "info": {
+    "name": "Multi-Agent Movie Picker API",
+    "description": "Test collection for the movie recommendation API covering greeting, movie recommendation, and out-of-scope intents with positive and negative cases",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Greeting Intent",
+      "item": [
+        {
+          "name": "Positive - Simple Greeting",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"hi\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/recommend",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "recommend"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Positive - How Are You",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"how are you?\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/recommend",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "recommend"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Negative - Empty Message",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/recommend",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "recommend"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Movie Recommendation Intent",
+      "item": [
+        {
+          "name": "Positive - Basic Comedy Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"I want a comedy movie\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/recommend",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "recommend"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Positive - Action Show Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"Show me action shows\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/recommend",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "recommend"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Positive - With Time Constraint",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"I want a movie under 2 hours\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/recommend",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "recommend"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Positive - Multiple Genres (AND)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"I want an action comedy movie\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/recommend",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "recommend"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Positive - OR Logic",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"action movie OR comedy show\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/recommend",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "recommend"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Negative - Impossible Time Constraint",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"I want a movie under 10 minutes\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/recommend",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "recommend"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Negative - Too Many Genres",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"I want a horror romance comedy sci-fi action western\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/recommend",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "recommend"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Out of Scope Intent",
+      "item": [
+        {
+          "name": "Positive - Weather Question",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"What's the weather?\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/recommend",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "recommend"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Positive - Joke Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"Tell me a joke\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/recommend",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "recommend"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Positive - Cooking Question",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"How do I cook pasta?\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/recommend",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "recommend"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Negative - Math Help",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"Help with math problem\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/recommend",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "recommend"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ]
+}

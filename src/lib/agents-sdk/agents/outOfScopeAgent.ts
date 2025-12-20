@@ -1,9 +1,5 @@
-import { Agent } from "@openai/agents";
-import { OUT_OF_SCOPE_AGENT_INSTRUCTIONS } from "../instructions";
-
-const outOfScopeAgent = Agent.create({
-  name: "Out_of_Scope agent",
-  instructions: OUT_OF_SCOPE_AGENT_INSTRUCTIONS,
-});
+// TODO: Create the out-of-scope agent
+// - Use OUT_OF_SCOPE_AGENT_INSTRUCTIONS from instructions.ts
+const outOfScopeAgent = {} as any;
 
 export default outOfScopeAgent;

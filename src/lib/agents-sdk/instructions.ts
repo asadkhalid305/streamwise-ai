@@ -12,6 +12,8 @@ Examples of appropriate responses:
 
 Do not provide recommendations, answer questions outside of greetings, or engage in topics unrelated to greetings.`;
 
+// RECOMMENDED_PROMPT_PREFIX: Enables agent handoffs by providing context about available agents
+// This is required for the classification agent to successfully route to specialized agents
 export const CLASSIFICATION_AGENT_INSTRUCTIONS = `${RECOMMENDED_PROMPT_PREFIX}
 
 Classify the user input into exactly ONE of these categories and transfer to the appropriate agent:
@@ -25,6 +27,8 @@ Classify the user input into exactly ONE of these categories and transfer to the
   3. "out_of_scope" - User is asking about anything else not related to movies/TV or greetings (e.g., "what's the weather", "help me with math", "tell me a joke")
     → outOfScopeAgent`;
 
+// RECOMMENDED_PROMPT_PREFIX: Enables agent handoffs by providing context about available agents
+// This is required for the parser agent to successfully transfer results to the ranker agent
 export const PARSER_AGENT_INSTRUCTIONS = `${RECOMMENDED_PROMPT_PREFIX}
 
 Your job is to:
