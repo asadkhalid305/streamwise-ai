@@ -186,9 +186,7 @@ export default function Home() {
                     AI Model
                   </div>
                   <div className="text-sm font-mono text-gray-900 dark:text-gray-100">
-                    {response.metadata.model ||
-                      process.env.NEXT_PUBLIC_DEFAULT_MODEL ||
-                      "N/A"}
+                    {response.metadata.model || "Unknown"}
                   </div>
                 </div>
 

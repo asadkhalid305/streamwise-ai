@@ -76,8 +76,8 @@ export const formatResponse = (result: any): RecommendResponse => {
     typeof originalInput === "string" ? originalInput : "unknown";
 
   const usage = result.state._lastTurnResponse?.usage;
-  const agentModel = result.state._currentAgent?.model;
-  const model = typeof agentModel === "string" ? agentModel : "unknown";
+  const model =
+    result.state._lastTurnResponse?.providerData?.model || "unknown";
   const responseId = result.state._lastTurnResponse?.responseId || "";
   const traceId = result.state._trace?.traceId || "";
 
