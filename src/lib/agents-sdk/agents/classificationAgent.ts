@@ -1,7 +1,15 @@
-// TODO: Create the classification agent
-// - Use CLASSIFICATION_AGENT_INSTRUCTIONS from instructions.ts
-// - Attach contentSafetyGuardrail as inputGuardrail
-// - Add handoffs to: greetingAgent, parserAgent, outOfScopeAgent
-const classificationAgent = {} as any;
+import { Agent } from "@openai/agents";
+import { CLASSIFICATION_AGENT_INSTRUCTIONS } from "../instructions";
+import { contentSafetyGuardrail } from "../guardrails/inputGuardrail";
+import greetingAgent from "./greetingAgent";
+import outOfScopeAgent from "./outOfScopeAgent";
+import parserAgent from "./parserAgent";
+
+const classificationAgent = Agent.create({
+  name: "Classification agent",
+  instructions: CLASSIFICATION_AGENT_INSTRUCTIONS,
+  inputGuardrails: [contentSafetyGuardrail],
+  handoffs: [greetingAgent, parserAgent, outOfScopeAgent],
+});
 
 export default classificationAgent;
