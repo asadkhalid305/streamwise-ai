@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import ThemeToggle from "./ThemeScript";
 
 export const metadata: Metadata = {
   title: "Movie & Show Picker",
@@ -13,20 +14,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
-                const theme = localStorage.getItem('theme') || 'dark';
-                document.documentElement.classList.toggle('dark', theme === 'dark');
+                try {
+                  var theme = localStorage.getItem('theme') || 'dark';
+                  if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                  }
+                } catch (e) {
+                  document.documentElement.classList.add('dark');
+                }
               })();
             `,
           }}
         />
       </head>
       <body className="bg-white dark:bg-[#202020] transition-all duration-300 ease-in-out">
+        <ThemeToggle />
         {children}
       </body>
     </html>

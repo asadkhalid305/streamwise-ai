@@ -1,26 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import type { RecommendResponse, RecommendItem } from "@/lib/types/api";
+import { useState } from "react";
+import type { RecommendResponse, RecommendItem } from "@/types/api";
+import MovieCard from "@/components/MovieCard";
+import { CornerDownLeft, Loader } from "lucide-react";
 
 export default function Home() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [response, setResponse] = useState<RecommendResponse | null>(null);
-  const [isDark, setIsDark] = useState(true);
-
-  useEffect(() => {
-    const theme = localStorage.getItem("theme") || "dark";
-    setIsDark(theme === "dark");
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = isDark ? "light" : "dark";
-    setIsDark(!isDark);
-    localStorage.setItem("theme", newTheme);
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,6 +34,7 @@ export default function Home() {
       }
 
       setResponse(data);
+      setMessage("");
     } catch (err) {
       setError("Failed to connect to the server");
     } finally {
@@ -52,46 +42,18 @@ export default function Home() {
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      if (message.trim() && !loading) {
+        handleSubmit(e as any);
+      }
+    }
+  };
+
   return (
     <main className="min-h-screen bg-white dark:bg-[#202020] py-12 px-4 sm:px-6 lg:px-8 transition-colors">
       <div className="max-w-3xl mx-auto">
-        <div className="flex justify-end mb-6">
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-lg bg-gray-100 dark:bg-[#2D2D2D] hover:bg-gray-200 dark:hover:bg-[#3A3A3A] transition-colors"
-            aria-label="Toggle theme"
-          >
-            {isDark ? (
-              <svg
-                className="w-5 h-5 text-gray-700 dark:text-gray-300"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                />
-              </svg>
-            ) : (
-              <svg
-                className="w-5 h-5 text-gray-700 dark:text-gray-300"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                />
-              </svg>
-            )}
-          </button>
-        </div>
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2">
             Movie & Show Picker
@@ -114,17 +76,28 @@ export default function Home() {
               id="message"
               rows={4}
               className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1A1A1A] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-800 dark:focus:ring-white focus:border-gray-800 dark:focus:border-white text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 transition-colors"
-              placeholder="E.g., I have a 1 hour flight, want something light and funny..."
+              placeholder="E.g., I have a 1 hour flight, want something light and funny... (Press Enter to submit)"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
+              onKeyDown={handleKeyDown}
               disabled={loading}
             />
             <button
               type="submit"
               disabled={loading || !message.trim()}
-              className="mt-4 w-full bg-gray-800 dark:bg-white text-white dark:text-black py-3 px-4 rounded-lg hover:bg-gray-900 dark:hover:bg-gray-100 disabled:bg-gray-400 dark:disabled:bg-gray-600 dark:disabled:text-white disabled:cursor-not-allowed transition-colors font-medium"
+              className="mt-4 w-full bg-gray-800 dark:bg-white text-white dark:text-black py-3 px-4 rounded-lg hover:bg-gray-900 dark:hover:bg-gray-100 disabled:bg-gray-400 dark:disabled:bg-gray-600 dark:disabled:text-white disabled:cursor-not-allowed transition-colors font-medium flex items-center justify-center gap-2"
             >
-              {loading ? "Recommending..." : "Recommend"}
+              {loading ? (
+                <>
+                  Recommending
+                  <Loader size={16} className="opacity-70" />
+                </>
+              ) : (
+                <>
+                  Recommend
+                  <CornerDownLeft size={16} className="opacity-70" />
+                </>
+              )}
             </button>
           </div>
         </form>
@@ -136,39 +109,143 @@ export default function Home() {
         )}
 
         {response && (
-          <div className="bg-white dark:bg-[#2D2D2D] rounded-xl border border-gray-200 dark:border-[#3A3A3A] p-6 transition-colors">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-              {response.title}
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400 mb-6">
-              <span className="font-medium">You said:</span> &quot;
-              {response.echo}&quot;
-            </p>
+          <div className="space-y-6">
+            {/* User Query Card */}
+            <div className="bg-white dark:bg-[#2D2D2D] rounded-xl border border-gray-200 dark:border-[#3A3A3A] p-6 transition-colors">
+              <p className="text-gray-600 dark:text-gray-400">
+                <span className="font-medium text-gray-700 dark:text-gray-300">
+                  You asked:
+                </span>
+              </p>
+              <p className="text-lg text-gray-900 dark:text-gray-100 mt-2 italic">
+                &quot;{response.userQuery}&quot;
+              </p>
+            </div>
 
-            <div className="space-y-4">
-              {response.items.map((item: RecommendItem, index: number) => (
-                <div
-                  key={index}
-                  className="border border-gray-200 dark:border-[#3A3A3A] bg-gray-50 dark:bg-[#1A1A1A] rounded-lg p-4 hover:border-gray-300 dark:hover:border-[#4A4A4A] transition-all"
-                >
-                  <div className="flex items-start justify-between mb-2">
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
-                      {item.name}
-                    </h3>
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300">
-                      {item.type}
-                    </span>
-                  </div>
-                  <p className="text-gray-700 dark:text-gray-300 mb-2">
-                    {item.why}
-                  </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    {item.type === "movie"
-                      ? `${item.durationMinutes} minutes`
-                      : `${item.episodeDurationMinutes} min per episode`}
+            {/* Show recommendations as cards if items exist */}
+            {response.items && response.items.length > 0 ? (
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2">
+                  <svg
+                    className="w-6 h-6 text-gray-600 dark:text-gray-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  Recommendations
+                </h2>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  {response.items.map((item: RecommendItem, index: number) => (
+                    <MovieCard key={index} item={item} index={index} />
+                  ))}
+                </div>
+              </div>
+            ) : (
+              /* Show plain text response if no items */
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+                  Response
+                </h2>
+                <div className="bg-gray-50 dark:bg-[#1A1A1A] rounded-lg p-6 border border-gray-200 dark:border-[#3A3A3A]">
+                  <p className="text-lg text-gray-900 dark:text-gray-100 leading-relaxed whitespace-pre-wrap">
+                    {response.message}
                   </p>
                 </div>
-              ))}
+              </div>
+            )}
+
+            {/* Metadata Card */}
+            <div className="bg-white dark:bg-[#2D2D2D] rounded-xl border border-gray-200 dark:border-[#3A3A3A] p-6 transition-colors">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2">
+                <svg
+                  className="w-5 h-5 text-gray-500 dark:text-gray-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                Response Details
+              </h3>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="bg-gray-50 dark:bg-[#1A1A1A] rounded-lg p-4 border border-gray-200 dark:border-[#3A3A3A]">
+                  <div className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">
+                    AI Model
+                  </div>
+                  <div className="text-sm font-mono text-gray-900 dark:text-gray-100">
+                    {response.metadata.model || "Unknown"}
+                  </div>
+                </div>
+
+                <div className="bg-gray-50 dark:bg-[#1A1A1A] rounded-lg p-4 border border-gray-200 dark:border-[#3A3A3A]">
+                  <div className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">
+                    Tokens Used
+                  </div>
+                  <div className="text-sm text-gray-900 dark:text-gray-100">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600 dark:text-gray-400">
+                        Input:
+                      </span>
+                      <span className="font-mono">
+                        {response.metadata.tokensUsed.prompt.toLocaleString()}
+                      </span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600 dark:text-gray-400">
+                        Output:
+                      </span>
+                      <span className="font-mono">
+                        {response.metadata.tokensUsed.completion.toLocaleString()}
+                      </span>
+                    </div>
+                    <div className="flex justify-between pt-1 mt-1 border-t border-gray-200 dark:border-gray-600">
+                      <span className="font-medium text-gray-700 dark:text-gray-300">
+                        Total:
+                      </span>
+                      <span className="font-mono font-semibold">
+                        {response.metadata.tokensUsed.total.toLocaleString()}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <details className="mt-4">
+                <summary className="cursor-pointer text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 select-none">
+                  Technical Details
+                </summary>
+                <div className="mt-3 space-y-2 text-xs font-mono bg-gray-50 dark:bg-[#1A1A1A] rounded-lg p-3 border border-gray-200 dark:border-[#3A3A3A]">
+                  <div className="flex flex-wrap gap-x-2">
+                    <span className="text-gray-500 dark:text-gray-400">
+                      Response ID:
+                    </span>
+                    <span className="text-gray-900 dark:text-gray-100 break-all">
+                      {response.metadata.responseId || "N/A"}
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-x-2">
+                    <span className="text-gray-500 dark:text-gray-400">
+                      Trace ID:
+                    </span>
+                    <span className="text-gray-900 dark:text-gray-100 break-all">
+                      {response.metadata.traceId || "N/A"}
+                    </span>
+                  </div>
+                </div>
+              </details>
             </div>
           </div>
         )}

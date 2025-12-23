@@ -1,0 +1,997 @@
+[
+  {
+    "name": "The Shawshank Redemption",
+    "type": "movie",
+    "runtimeMinutes": 142,
+    "genres": ["Drama"],
+    "year": 1994,
+    "ageRating": "R"
+  },
+  {
+    "name": "Inception",
+    "type": "movie",
+    "runtimeMinutes": 148,
+    "genres": ["Sci-Fi", "Thriller"],
+    "year": 2010,
+    "ageRating": "PG-13"
+  },
+  {
+    "name": "The Grand Budapest Hotel",
+    "type": "movie",
+    "runtimeMinutes": 99,
+    "genres": ["Comedy", "Drama"],
+    "year": 2014,
+    "ageRating": "R"
+  },
+  {
+    "name": "Paddington 2",
+    "type": "movie",
+    "runtimeMinutes": 103,
+    "genres": ["Comedy", "Family"],
+    "year": 2017,
+    "ageRating": "PG"
+  },
+  {
+    "name": "Mad Max: Fury Road",
+    "type": "movie",
+    "runtimeMinutes": 120,
+    "genres": ["Action", "Adventure"],
+    "year": 2015,
+    "ageRating": "R"
+  },
+  {
+    "name": "Parasite",
+    "type": "movie",
+    "runtimeMinutes": 132,
+    "genres": ["Thriller", "Drama"],
+    "year": 2019,
+    "ageRating": "R"
+  },
+  {
+    "name": "Everything Everywhere All at Once",
+    "type": "movie",
+    "runtimeMinutes": 139,
+    "genres": ["Sci-Fi", "Comedy", "Action"],
+    "year": 2022,
+    "ageRating": "R"
+  },
+  {
+    "name": "Spider-Man: Into the Spider-Verse",
+    "type": "movie",
+    "runtimeMinutes": 117,
+    "genres": ["Animation", "Action"],
+    "year": 2018,
+    "ageRating": "PG"
+  },
+  {
+    "name": "La La Land",
+    "type": "movie",
+    "runtimeMinutes": 128,
+    "genres": ["Musical", "Romance"],
+    "year": 2016,
+    "ageRating": "PG-13"
+  },
+  {
+    "name": "The Dark Knight",
+    "type": "movie",
+    "runtimeMinutes": 152,
+    "genres": ["Action", "Crime"],
+    "year": 2008,
+    "ageRating": "PG-13"
+  },
+  {
+    "name": "Knives Out",
+    "type": "movie",
+    "runtimeMinutes": 130,
+    "genres": ["Mystery", "Comedy"],
+    "year": 2019,
+    "ageRating": "PG-13"
+  },
+  {
+    "name": "Coco",
+    "type": "movie",
+    "runtimeMinutes": 105,
+    "genres": ["Animation", "Family"],
+    "year": 2017,
+    "ageRating": "PG"
+  },
+  {
+    "name": "Dune",
+    "type": "movie",
+    "runtimeMinutes": 155,
+    "genres": ["Sci-Fi", "Adventure"],
+    "year": 2021,
+    "ageRating": "PG-13"
+  },
+  {
+    "name": "Amélie",
+    "type": "movie",
+    "runtimeMinutes": 122,
+    "genres": ["Romance", "Comedy"],
+    "year": 2001,
+    "ageRating": "R"
+  },
+  {
+    "name": "Top Gun: Maverick",
+    "type": "movie",
+    "runtimeMinutes": 130,
+    "genres": ["Action", "Drama"],
+    "year": 2022,
+    "ageRating": "PG-13"
+  },
+  {
+    "name": "The Big Short",
+    "type": "movie",
+    "runtimeMinutes": 130,
+    "genres": ["Drama", "Comedy"],
+    "year": 2015,
+    "ageRating": "R"
+  },
+  {
+    "name": "Her",
+    "type": "movie",
+    "runtimeMinutes": 126,
+    "genres": ["Sci-Fi", "Romance"],
+    "year": 2013,
+    "ageRating": "R"
+  },
+  {
+    "name": "Ocean's Eleven",
+    "type": "movie",
+    "runtimeMinutes": 116,
+    "genres": ["Crime", "Comedy"],
+    "year": 2001,
+    "ageRating": "PG-13"
+  },
+  {
+    "name": "The Truman Show",
+    "type": "movie",
+    "runtimeMinutes": 103,
+    "genres": ["Drama", "Sci-Fi"],
+    "year": 1998,
+    "ageRating": "PG"
+  },
+  {
+    "name": "The Martian",
+    "type": "movie",
+    "runtimeMinutes": 144,
+    "genres": ["Sci-Fi", "Adventure"],
+    "year": 2015,
+    "ageRating": "PG-13"
+  },
+  {
+    "name": "Toy Story",
+    "type": "movie",
+    "runtimeMinutes": 81,
+    "genres": ["Animation", "Family", "Comedy"],
+    "year": 1995,
+    "ageRating": "G"
+  },
+  {
+    "name": "The Lion King",
+    "type": "movie",
+    "runtimeMinutes": 88,
+    "genres": ["Animation", "Family", "Drama"],
+    "year": 1994,
+    "ageRating": "G"
+  },
+  {
+    "name": "Frozen",
+    "type": "movie",
+    "runtimeMinutes": 102,
+    "genres": ["Animation", "Family", "Musical"],
+    "year": 2013,
+    "ageRating": "PG"
+  },
+  {
+    "name": "Moana",
+    "type": "movie",
+    "runtimeMinutes": 107,
+    "genres": ["Animation", "Family", "Adventure"],
+    "year": 2016,
+    "ageRating": "PG"
+  },
+  {
+    "name": "Finding Nemo",
+    "type": "movie",
+    "runtimeMinutes": 100,
+    "genres": ["Animation", "Family", "Adventure"],
+    "year": 2003,
+    "ageRating": "G"
+  },
+  {
+    "name": "Shrek",
+    "type": "movie",
+    "runtimeMinutes": 90,
+    "genres": ["Animation", "Family", "Comedy"],
+    "year": 2001,
+    "ageRating": "PG"
+  },
+  {
+    "name": "The Incredibles",
+    "type": "movie",
+    "runtimeMinutes": 115,
+    "genres": ["Animation", "Family", "Action"],
+    "year": 2004,
+    "ageRating": "PG"
+  },
+  {
+    "name": "WALL-E",
+    "type": "movie",
+    "runtimeMinutes": 98,
+    "genres": ["Animation", "Family", "Sci-Fi"],
+    "year": 2008,
+    "ageRating": "G"
+  },
+  {
+    "name": "Encanto",
+    "type": "movie",
+    "runtimeMinutes": 102,
+    "genres": ["Animation", "Family", "Musical"],
+    "year": 2021,
+    "ageRating": "PG"
+  },
+  {
+    "name": "Harry Potter and the Sorcerer's Stone",
+    "type": "movie",
+    "runtimeMinutes": 152,
+    "genres": ["Fantasy", "Family", "Adventure"],
+    "year": 2001,
+    "ageRating": "PG"
+  },
+  {
+    "name": "Matilda",
+    "type": "movie",
+    "runtimeMinutes": 102,
+    "genres": ["Family", "Comedy", "Fantasy"],
+    "year": 1996,
+    "ageRating": "PG"
+  },
+  {
+    "name": "The Princess Bride",
+    "type": "movie",
+    "runtimeMinutes": 98,
+    "genres": ["Adventure", "Family", "Fantasy"],
+    "year": 1987,
+    "ageRating": "PG"
+  },
+  {
+    "name": "Home Alone",
+    "type": "movie",
+    "runtimeMinutes": 103,
+    "genres": ["Comedy", "Family"],
+    "year": 1990,
+    "ageRating": "PG"
+  },
+  {
+    "name": "The Lego Movie",
+    "type": "movie",
+    "runtimeMinutes": 100,
+    "genres": ["Animation", "Family", "Comedy"],
+    "year": 2014,
+    "ageRating": "PG"
+  },
+  {
+    "name": "Zootopia",
+    "type": "movie",
+    "runtimeMinutes": 108,
+    "genres": ["Animation", "Family", "Comedy"],
+    "year": 2016,
+    "ageRating": "PG"
+  },
+  {
+    "name": "The Godfather",
+    "type": "movie",
+    "runtimeMinutes": 175,
+    "genres": ["Crime", "Drama"],
+    "year": 1972,
+    "ageRating": "R"
+  },
+  {
+    "name": "Pulp Fiction",
+    "type": "movie",
+    "runtimeMinutes": 154,
+    "genres": ["Crime", "Drama"],
+    "year": 1994,
+    "ageRating": "R"
+  },
+  {
+    "name": "The Matrix",
+    "type": "movie",
+    "runtimeMinutes": 136,
+    "genres": ["Sci-Fi", "Action"],
+    "year": 1999,
+    "ageRating": "R"
+  },
+  {
+    "name": "Fight Club",
+    "type": "movie",
+    "runtimeMinutes": 139,
+    "genres": ["Drama", "Thriller"],
+    "year": 1999,
+    "ageRating": "R"
+  },
+  {
+    "name": "Forrest Gump",
+    "type": "movie",
+    "runtimeMinutes": 142,
+    "genres": ["Drama", "Romance"],
+    "year": 1994,
+    "ageRating": "PG-13"
+  },
+  {
+    "name": "Interstellar",
+    "type": "movie",
+    "runtimeMinutes": 169,
+    "genres": ["Sci-Fi", "Drama", "Adventure"],
+    "year": 2014,
+    "ageRating": "PG-13"
+  },
+  {
+    "name": "The Silence of the Lambs",
+    "type": "movie",
+    "runtimeMinutes": 118,
+    "genres": ["Thriller", "Crime", "Horror"],
+    "year": 1991,
+    "ageRating": "R"
+  },
+  {
+    "name": "Gladiator",
+    "type": "movie",
+    "runtimeMinutes": 155,
+    "genres": ["Action", "Drama", "Adventure"],
+    "year": 2000,
+    "ageRating": "R"
+  },
+  {
+    "name": "The Departed",
+    "type": "movie",
+    "runtimeMinutes": 151,
+    "genres": ["Crime", "Drama", "Thriller"],
+    "year": 2006,
+    "ageRating": "R"
+  },
+  {
+    "name": "Goodfellas",
+    "type": "movie",
+    "runtimeMinutes": 146,
+    "genres": ["Crime", "Drama"],
+    "year": 1990,
+    "ageRating": "R"
+  },
+  {
+    "name": "The Social Network",
+    "type": "movie",
+    "runtimeMinutes": 120,
+    "genres": ["Drama", "Biography"],
+    "year": 2010,
+    "ageRating": "PG-13"
+  },
+  {
+    "name": "Joker",
+    "type": "movie",
+    "runtimeMinutes": 122,
+    "genres": ["Crime", "Drama", "Thriller"],
+    "year": 2019,
+    "ageRating": "R"
+  },
+  {
+    "name": "Whiplash",
+    "type": "movie",
+    "runtimeMinutes": 106,
+    "genres": ["Drama", "Music"],
+    "year": 2014,
+    "ageRating": "R"
+  },
+  {
+    "name": "The Wolf of Wall Street",
+    "type": "movie",
+    "runtimeMinutes": 180,
+    "genres": ["Comedy", "Crime", "Drama"],
+    "year": 2013,
+    "ageRating": "R"
+  },
+  {
+    "name": "No Country for Old Men",
+    "type": "movie",
+    "runtimeMinutes": 122,
+    "genres": ["Crime", "Drama", "Thriller"],
+    "year": 2007,
+    "ageRating": "R"
+  },
+  {
+    "name": "The Notebook",
+    "type": "movie",
+    "runtimeMinutes": 123,
+    "genres": ["Romance", "Drama"],
+    "year": 2004,
+    "ageRating": "PG-13"
+  },
+  {
+    "name": "Pride and Prejudice",
+    "type": "movie",
+    "runtimeMinutes": 129,
+    "genres": ["Romance", "Drama"],
+    "year": 2005,
+    "ageRating": "PG"
+  },
+  {
+    "name": "Before Sunrise",
+    "type": "movie",
+    "runtimeMinutes": 101,
+    "genres": ["Romance", "Drama"],
+    "year": 1995,
+    "ageRating": "R"
+  },
+  {
+    "name": "Eternal Sunshine of the Spotless Mind",
+    "type": "movie",
+    "runtimeMinutes": 108,
+    "genres": ["Romance", "Sci-Fi", "Drama"],
+    "year": 2004,
+    "ageRating": "R"
+  },
+  {
+    "name": "500 Days of Summer",
+    "type": "movie",
+    "runtimeMinutes": 95,
+    "genres": ["Romance", "Comedy", "Drama"],
+    "year": 2009,
+    "ageRating": "PG-13"
+  },
+  {
+    "name": "Crazy Rich Asians",
+    "type": "movie",
+    "runtimeMinutes": 120,
+    "genres": ["Romance", "Comedy"],
+    "year": 2018,
+    "ageRating": "PG-13"
+  },
+  {
+    "name": "The Conjuring",
+    "type": "movie",
+    "runtimeMinutes": 112,
+    "genres": ["Horror", "Mystery", "Thriller"],
+    "year": 2013,
+    "ageRating": "R"
+  },
+  {
+    "name": "Get Out",
+    "type": "movie",
+    "runtimeMinutes": 104,
+    "genres": ["Horror", "Mystery", "Thriller"],
+    "year": 2017,
+    "ageRating": "R"
+  },
+  {
+    "name": "A Quiet Place",
+    "type": "movie",
+    "runtimeMinutes": 90,
+    "genres": ["Horror", "Drama", "Sci-Fi"],
+    "year": 2018,
+    "ageRating": "PG-13"
+  },
+  {
+    "name": "Hereditary",
+    "type": "movie",
+    "runtimeMinutes": 127,
+    "genres": ["Horror", "Drama", "Mystery"],
+    "year": 2018,
+    "ageRating": "R"
+  },
+  {
+    "name": "John Wick",
+    "type": "movie",
+    "runtimeMinutes": 101,
+    "genres": ["Action", "Thriller"],
+    "year": 2014,
+    "ageRating": "R"
+  },
+  {
+    "name": "Die Hard",
+    "type": "movie",
+    "runtimeMinutes": 132,
+    "genres": ["Action", "Thriller"],
+    "year": 1988,
+    "ageRating": "R"
+  },
+  {
+    "name": "Mission: Impossible - Fallout",
+    "type": "movie",
+    "runtimeMinutes": 147,
+    "genres": ["Action", "Adventure", "Thriller"],
+    "year": 2018,
+    "ageRating": "PG-13"
+  },
+  {
+    "name": "The Avengers",
+    "type": "movie",
+    "runtimeMinutes": 143,
+    "genres": ["Action", "Adventure", "Sci-Fi"],
+    "year": 2012,
+    "ageRating": "PG-13"
+  },
+  {
+    "name": "The Hangover",
+    "type": "movie",
+    "runtimeMinutes": 100,
+    "genres": ["Comedy"],
+    "year": 2009,
+    "ageRating": "R"
+  },
+  {
+    "name": "Superbad",
+    "type": "movie",
+    "runtimeMinutes": 113,
+    "genres": ["Comedy"],
+    "year": 2007,
+    "ageRating": "R"
+  },
+  {
+    "name": "Groundhog Day",
+    "type": "movie",
+    "runtimeMinutes": 101,
+    "genres": ["Comedy", "Fantasy", "Romance"],
+    "year": 1993,
+    "ageRating": "PG"
+  },
+  {
+    "name": "Breaking Bad",
+    "type": "show",
+    "episodeRuntimeMinutes": 47,
+    "genres": ["Crime", "Drama"],
+    "year": 2008,
+    "seasons": 5,
+    "ageRating": "TV-MA"
+  },
+  {
+    "name": "The Office",
+    "type": "show",
+    "episodeRuntimeMinutes": 22,
+    "genres": ["Comedy"],
+    "year": 2005,
+    "seasons": 9,
+    "ageRating": "TV-14"
+  },
+  {
+    "name": "Stranger Things",
+    "type": "show",
+    "episodeRuntimeMinutes": 51,
+    "genres": ["Sci-Fi", "Horror"],
+    "year": 2016,
+    "seasons": 4,
+    "ageRating": "TV-14"
+  },
+  {
+    "name": "The Bear",
+    "type": "show",
+    "episodeRuntimeMinutes": 30,
+    "genres": ["Drama", "Comedy"],
+    "year": 2022,
+    "seasons": 2,
+    "ageRating": "TV-MA"
+  },
+  {
+    "name": "Ted Lasso",
+    "type": "show",
+    "episodeRuntimeMinutes": 30,
+    "genres": ["Comedy", "Sports"],
+    "year": 2020,
+    "seasons": 3,
+    "ageRating": "TV-MA"
+  },
+  {
+    "name": "The Last of Us",
+    "type": "show",
+    "episodeRuntimeMinutes": 55,
+    "genres": ["Drama", "Sci-Fi"],
+    "year": 2023,
+    "seasons": 1,
+    "ageRating": "TV-MA"
+  },
+  {
+    "name": "Succession",
+    "type": "show",
+    "episodeRuntimeMinutes": 60,
+    "genres": ["Drama"],
+    "year": 2018,
+    "seasons": 4,
+    "ageRating": "TV-MA"
+  },
+  {
+    "name": "Fleabag",
+    "type": "show",
+    "episodeRuntimeMinutes": 27,
+    "genres": ["Comedy", "Drama"],
+    "year": 2016,
+    "seasons": 2,
+    "ageRating": "TV-MA"
+  },
+  {
+    "name": "The Queen's Gambit",
+    "type": "show",
+    "episodeRuntimeMinutes": 60,
+    "genres": ["Drama"],
+    "year": 2020,
+    "seasons": 1,
+    "ageRating": "TV-MA"
+  },
+  {
+    "name": "Community",
+    "type": "show",
+    "episodeRuntimeMinutes": 22,
+    "genres": ["Comedy"],
+    "year": 2009,
+    "seasons": 6,
+    "ageRating": "TV-14"
+  },
+  {
+    "name": "The Crown",
+    "type": "show",
+    "episodeRuntimeMinutes": 58,
+    "genres": ["Drama", "History"],
+    "year": 2016,
+    "seasons": 6,
+    "ageRating": "TV-MA"
+  },
+  {
+    "name": "Severance",
+    "type": "show",
+    "episodeRuntimeMinutes": 48,
+    "genres": ["Sci-Fi", "Thriller"],
+    "year": 2022,
+    "seasons": 1,
+    "ageRating": "TV-MA"
+  },
+  {
+    "name": "Only Murders in the Building",
+    "type": "show",
+    "episodeRuntimeMinutes": 35,
+    "genres": ["Comedy", "Mystery"],
+    "year": 2021,
+    "seasons": 3,
+    "ageRating": "TV-14"
+  },
+  {
+    "name": "The Mandalorian",
+    "type": "show",
+    "episodeRuntimeMinutes": 40,
+    "genres": ["Sci-Fi", "Action"],
+    "year": 2019,
+    "seasons": 3,
+    "ageRating": "TV-PG"
+  },
+  {
+    "name": "Arrested Development",
+    "type": "show",
+    "episodeRuntimeMinutes": 22,
+    "genres": ["Comedy"],
+    "year": 2003,
+    "seasons": 5,
+    "ageRating": "TV-14"
+  },
+  {
+    "name": "Black Mirror",
+    "type": "show",
+    "episodeRuntimeMinutes": 60,
+    "genres": ["Sci-Fi", "Thriller"],
+    "year": 2011,
+    "seasons": 6,
+    "ageRating": "TV-MA"
+  },
+  {
+    "name": "The Good Place",
+    "type": "show",
+    "episodeRuntimeMinutes": 22,
+    "genres": ["Comedy", "Fantasy"],
+    "year": 2016,
+    "seasons": 4,
+    "ageRating": "TV-PG"
+  },
+  {
+    "name": "Abbott Elementary",
+    "type": "show",
+    "episodeRuntimeMinutes": 22,
+    "genres": ["Comedy"],
+    "year": 2021,
+    "seasons": 2,
+    "ageRating": "TV-PG"
+  },
+  {
+    "name": "Wednesday",
+    "type": "show",
+    "episodeRuntimeMinutes": 50,
+    "genres": ["Comedy", "Horror"],
+    "year": 2022,
+    "seasons": 1,
+    "ageRating": "TV-14"
+  },
+  {
+    "name": "Arcane",
+    "type": "show",
+    "episodeRuntimeMinutes": 41,
+    "genres": ["Animation", "Action"],
+    "year": 2021,
+    "seasons": 1,
+    "ageRating": "TV-14"
+  },
+  {
+    "name": "Bluey",
+    "type": "show",
+    "episodeRuntimeMinutes": 7,
+    "genres": ["Animation", "Family", "Comedy"],
+    "year": 2018,
+    "seasons": 3,
+    "ageRating": "TV-Y"
+  },
+  {
+    "name": "Avatar: The Last Airbender",
+    "type": "show",
+    "episodeRuntimeMinutes": 23,
+    "genres": ["Animation", "Family", "Fantasy", "Adventure"],
+    "year": 2005,
+    "seasons": 3,
+    "ageRating": "TV-Y7"
+  },
+  {
+    "name": "SpongeBob SquarePants",
+    "type": "show",
+    "episodeRuntimeMinutes": 11,
+    "genres": ["Animation", "Comedy", "Family"],
+    "year": 1999,
+    "seasons": 14,
+    "ageRating": "TV-Y7"
+  },
+  {
+    "name": "Gravity Falls",
+    "type": "show",
+    "episodeRuntimeMinutes": 23,
+    "genres": ["Animation", "Comedy", "Mystery"],
+    "year": 2012,
+    "seasons": 2,
+    "ageRating": "TV-Y7"
+  },
+  {
+    "name": "Paw Patrol",
+    "type": "show",
+    "episodeRuntimeMinutes": 23,
+    "genres": ["Animation", "Family"],
+    "year": 2013,
+    "seasons": 11,
+    "ageRating": "TV-Y"
+  },
+  {
+    "name": "Peppa Pig",
+    "type": "show",
+    "episodeRuntimeMinutes": 5,
+    "genres": ["Animation", "Family", "Comedy"],
+    "year": 2004,
+    "seasons": 9,
+    "ageRating": "TV-Y"
+  },
+  {
+    "name": "The Magic School Bus",
+    "type": "show",
+    "episodeRuntimeMinutes": 25,
+    "genres": ["Animation", "Family", "Educational"],
+    "year": 1994,
+    "seasons": 4,
+    "ageRating": "TV-Y"
+  },
+  {
+    "name": "Daniel Tiger's Neighborhood",
+    "type": "show",
+    "episodeRuntimeMinutes": 26,
+    "genres": ["Animation", "Family", "Educational"],
+    "year": 2012,
+    "seasons": 6,
+    "ageRating": "TV-Y"
+  },
+  {
+    "name": "Adventure Time",
+    "type": "show",
+    "episodeRuntimeMinutes": 11,
+    "genres": ["Animation", "Comedy", "Fantasy"],
+    "year": 2010,
+    "seasons": 10,
+    "ageRating": "TV-PG"
+  },
+  {
+    "name": "Steven Universe",
+    "type": "show",
+    "episodeRuntimeMinutes": 11,
+    "genres": ["Animation", "Fantasy", "Adventure"],
+    "year": 2013,
+    "seasons": 5,
+    "ageRating": "TV-PG"
+  },
+  {
+    "name": "The Simpsons",
+    "type": "show",
+    "episodeRuntimeMinutes": 22,
+    "genres": ["Animation", "Comedy"],
+    "year": 1989,
+    "seasons": 35,
+    "ageRating": "TV-PG"
+  },
+  {
+    "name": "Game of Thrones",
+    "type": "show",
+    "episodeRuntimeMinutes": 60,
+    "genres": ["Fantasy", "Drama", "Adventure"],
+    "year": 2011,
+    "seasons": 8,
+    "ageRating": "TV-MA"
+  },
+  {
+    "name": "The Sopranos",
+    "type": "show",
+    "episodeRuntimeMinutes": 55,
+    "genres": ["Crime", "Drama"],
+    "year": 1999,
+    "seasons": 6,
+    "ageRating": "TV-MA"
+  },
+  {
+    "name": "The Wire",
+    "type": "show",
+    "episodeRuntimeMinutes": 60,
+    "genres": ["Crime", "Drama"],
+    "year": 2002,
+    "seasons": 5,
+    "ageRating": "TV-MA"
+  },
+  {
+    "name": "Ozark",
+    "type": "show",
+    "episodeRuntimeMinutes": 60,
+    "genres": ["Crime", "Drama", "Thriller"],
+    "year": 2017,
+    "seasons": 4,
+    "ageRating": "TV-MA"
+  },
+  {
+    "name": "The Witcher",
+    "type": "show",
+    "episodeRuntimeMinutes": 60,
+    "genres": ["Fantasy", "Action", "Adventure"],
+    "year": 2019,
+    "seasons": 3,
+    "ageRating": "TV-MA"
+  },
+  {
+    "name": "House of the Dragon",
+    "type": "show",
+    "episodeRuntimeMinutes": 60,
+    "genres": ["Fantasy", "Drama", "Adventure"],
+    "year": 2022,
+    "seasons": 1,
+    "ageRating": "TV-MA"
+  },
+  {
+    "name": "The Boys",
+    "type": "show",
+    "episodeRuntimeMinutes": 60,
+    "genres": ["Action", "Comedy", "Crime"],
+    "year": 2019,
+    "seasons": 4,
+    "ageRating": "TV-MA"
+  },
+  {
+    "name": "True Detective",
+    "type": "show",
+    "episodeRuntimeMinutes": 60,
+    "genres": ["Crime", "Drama", "Mystery"],
+    "year": 2014,
+    "seasons": 4,
+    "ageRating": "TV-MA"
+  },
+  {
+    "name": "Squid Game",
+    "type": "show",
+    "episodeRuntimeMinutes": 60,
+    "genres": ["Thriller", "Drama", "Mystery"],
+    "year": 2021,
+    "seasons": 1,
+    "ageRating": "TV-MA"
+  },
+  {
+    "name": "Money Heist",
+    "type": "show",
+    "episodeRuntimeMinutes": 70,
+    "genres": ["Crime", "Drama", "Thriller"],
+    "year": 2017,
+    "seasons": 5,
+    "ageRating": "TV-MA"
+  },
+  {
+    "name": "Friends",
+    "type": "show",
+    "episodeRuntimeMinutes": 22,
+    "genres": ["Comedy", "Romance"],
+    "year": 1994,
+    "seasons": 10,
+    "ageRating": "TV-14"
+  },
+  {
+    "name": "How I Met Your Mother",
+    "type": "show",
+    "episodeRuntimeMinutes": 22,
+    "genres": ["Comedy", "Romance"],
+    "year": 2005,
+    "seasons": 9,
+    "ageRating": "TV-14"
+  },
+  {
+    "name": "Parks and Recreation",
+    "type": "show",
+    "episodeRuntimeMinutes": 22,
+    "genres": ["Comedy"],
+    "year": 2009,
+    "seasons": 7,
+    "ageRating": "TV-14"
+  },
+  {
+    "name": "Brooklyn Nine-Nine",
+    "type": "show",
+    "episodeRuntimeMinutes": 22,
+    "genres": ["Comedy", "Crime"],
+    "year": 2013,
+    "seasons": 8,
+    "ageRating": "TV-14"
+  },
+  {
+    "name": "Schitt's Creek",
+    "type": "show",
+    "episodeRuntimeMinutes": 22,
+    "genres": ["Comedy"],
+    "year": 2015,
+    "seasons": 6,
+    "ageRating": "TV-14"
+  },
+  {
+    "name": "The Marvelous Mrs. Maisel",
+    "type": "show",
+    "episodeRuntimeMinutes": 60,
+    "genres": ["Comedy", "Drama"],
+    "year": 2017,
+    "seasons": 5,
+    "ageRating": "TV-MA"
+  },
+  {
+    "name": "Sherlock",
+    "type": "show",
+    "episodeRuntimeMinutes": 90,
+    "genres": ["Crime", "Drama", "Mystery"],
+    "year": 2010,
+    "seasons": 4,
+    "ageRating": "TV-14"
+  },
+  {
+    "name": "The Walking Dead",
+    "type": "show",
+    "episodeRuntimeMinutes": 44,
+    "genres": ["Horror", "Drama", "Thriller"],
+    "year": 2010,
+    "seasons": 11,
+    "ageRating": "TV-MA"
+  },
+  {
+    "name": "Westworld",
+    "type": "show",
+    "episodeRuntimeMinutes": 60,
+    "genres": ["Sci-Fi", "Drama", "Mystery"],
+    "year": 2016,
+    "seasons": 4,
+    "ageRating": "TV-MA"
+  },
+  {
+    "name": "The Handmaid's Tale",
+    "type": "show",
+    "episodeRuntimeMinutes": 50,
+    "genres": ["Drama", "Sci-Fi", "Thriller"],
+    "year": 2017,
+    "seasons": 5,
+    "ageRating": "TV-MA"
+  }
+]

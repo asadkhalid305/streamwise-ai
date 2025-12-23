@@ -1,21 +1,5 @@
 # Multi-Agent Movie Picker Workshop Guide
 
-> ⚠️ **IMPORTANT:** This workshop guide is designed for the **`template` branch**, not the `main` branch.
->
-> **You are currently viewing this file on the `main` branch**, which contains only minimal project setup without the workshop structure.
->
-> **To follow this workshop:**
->
-> ```bash
-> # Switch to the template branch
-> git checkout template
->
-> # Create your own working branch (recommended)
-> git checkout -b my-workshop
-> ```
->
-> The `main` branch is for advanced users who want to build the entire system from scratch without guidance.
-
 **Welcome!** This guide walks you through building a complete multi-agent system step-by-step. Follow along during the live workshop, or use this as a self-paced guide if you're learning independently.
 
 ---

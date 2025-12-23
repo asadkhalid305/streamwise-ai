@@ -2,14 +2,6 @@
 
 _End decision fatigue. Get personalized recommendations in seconds._
 
-> 📍 **Branch Context:** This document describes the complete vision and functionality of the Multi-Agent Movie Picker system.
->
-> - The **`main` branch** (where you are now) contains only the basic project setup
-> - The **`template` branch** provides workshop structure with TODOs and guidance
-> - The **`solution` branch** contains the complete working implementation described in this document
->
-> Switch branches to access different learning paths. See the main README for details.
-
 ## The Problem
 
 Choosing _what to watch_ has become harder than watching itself.
