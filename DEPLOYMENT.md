@@ -25,7 +25,7 @@ This application is optimized for Vercel deployment with full Next.js support.
    **Option A: Shared API Key (You pay for all users)**
 
    - Add environment variable: `OPENAI_API_KEY` = `sk-proj-...`
-   - Add environment variable: `OPENAI_DEFAULT_MODEL` = `gpt-4o-mini`
+   - Add environment variable: `OPENAI_DEFAULT_MODEL` = `gpt-4.1-mini`
    - Users won't see the API key modal
 
    **Option B: User-Provided Keys (Each user pays)**
@@ -53,7 +53,7 @@ This application is optimized for Vercel deployment with full Next.js support.
 | Variable                | Required | Default       | Description                                                                   |
 | ----------------------- | -------- | ------------- | ----------------------------------------------------------------------------- |
 | `OPENAI_API_KEY`        | No\*     | -             | Your OpenAI API key                                                           |
-| `OPENAI_DEFAULT_MODEL`  | No       | `gpt-4o-mini` | OpenAI model to use                                                           |
+| `OPENAI_DEFAULT_MODEL`  | No       | `gpt-4.1-mini` | OpenAI model to use                                                           |
 | `NEXT_PUBLIC_BASE_PATH` | No       | -             | Base path for subdirectory deployment (e.g., `/apps/movie-and-series-picker`) |
 
 \* Required only if you want to provide a shared key. Otherwise, users provide their own.
