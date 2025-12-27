@@ -80,18 +80,21 @@ git checkout main
 npm run dev
 ```
 
-### OpenAI API Key Setup
+### OpenAI & TMDB API Key Setup
 
-This workshop requires an OpenAI API key to run the agents.
+This workshop requires two API keys: **OpenAI** (for the agents) and **TMDB** (for movie data).
 
-**To get your API key:**
-
+**1. OpenAI API Key:**
 1. Go to [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
 2. Sign in or create an account
 3. Click "Create new secret key"
-4. Copy the key (you won't be able to see it again)
+4. Copy the key
 
-_(Note: If you're unable to generate an API key, contact me for assistance)_
+**2. TMDB API Key:**
+1. Go to [themoviedb.org](https://www.themoviedb.org/) and create an account
+2. Go to **Settings -> API**
+3. Create a new API Key (select "Developer" and accept terms)
+4. Copy the **API Key (v3 auth)**
 
 **To configure your environment:**
 
@@ -101,22 +104,22 @@ _(Note: If you're unable to generate an API key, contact me for assistance)_
    cp .env.local.example .env.local
    ```
 
-2. Open `.env.local` and add your API key:
+2. Open `.env.local` and add your keys:
 
    ```bash
    OPENAI_API_KEY="sk-proj-your-actual-api-key-here"
+   TMDB_API_KEY="your_tmdb_api_key_here"
    ```
 
 3. Open `.env.local` and add your preferred model name:
 
    ```bash
-   OPENAI_DEFAULT_MODEL="gpt-4.1-mini"
+   OPENAI_DEFAULT_MODEL="gpt-4o-mini"
    ```
 
    **Recommended models:**
 
-   - `gpt-4.1-mini` - Most cost-effective, fast (recommended for workshop)
-   - `gpt-4o-mini` - Fast and affordable
+   - `gpt-4o-mini` - Most cost-effective, fast (recommended for workshop)
    - `gpt-4o` - Most capable, higher cost
    - `gpt-4-turbo` - Balanced performance
 
@@ -222,7 +225,7 @@ git checkout template  # or your branch name
 
 - `src/types/` - TypeScript interfaces
 - `src/utils/responseFormatter.ts` - Response transformation
-- `src/data/catalog.json` - Movie/show database
+- `src/services/tmdb.ts` - TMDB API integration service
 
 ---
 
@@ -411,21 +414,26 @@ Now for the complex part. Three components work together:
 
 **File**: `src/lib/agents-sdk/tools/catalogSearchTool.ts`
 
-The `searchCatalog()` helper function is pre-written in `src/lib/agents-sdk/util/helpers.ts`. This function contains the actual search logic (filtering by type, genres, and time constraints). Your job is to define the tool that wraps this helper:
+The `searchTMDBCatalog()` helper function is pre-written in `src/services/tmdb.ts`. This function contains the logic to query the real TMDB API. Your job is to define the tool that wraps this service:
 
-- TODO: Define a Zod schema with three parameters:
+- TODO: Define a Zod schema with the following parameters (use `.nullable()` for optional fields):
 
   - `typePreference`: enum of ["movie", "show", "any"]
-  - `genresInclude`: array of strings (genre names)
-  - `timeLimitMinutes`: number or null (runtime limit)
+  - `genresInclude`: array of strings
+  - `year`: number | null
+  - `minRating`: number | null
+  - `language`: string | null (ISO-639-1 code)
+  - `actors`: array of strings (names)
+  - `directors`: array of strings (names)
+  - `sortBy`: string | null
 
 - TODO: Create the tool definition:
   - Set a descriptive `name`
-  - Set a clear `description` of what it does
-  - In the `execute` function, import and call `searchCatalog(query)` from the helpers file
+  - Set a clear `description`
+  - In the `execute` function, import and call `searchTMDBCatalog(query)` from `src/services/tmdb.ts`
   - Return the results
 
-**Note**: The `searchCatalog()` function is just a helper that can be replaced with any implementation (API calls, database queries, etc.). For this workshop, it's a simple filter function over the local catalog.
+**Note**: The `searchTMDBCatalog()` function handles the complexity of sequential API calls to avoid rate limits. You just need to pass the parameters.
 
 ### Step 6B: Create the Parser Agent
 
