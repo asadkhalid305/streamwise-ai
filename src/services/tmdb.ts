@@ -10,13 +10,13 @@ import {
 } from "@/types/tmdb";
 
 const TMDB_BASE_URL = "https://api.themoviedb.org/3";
-const TMDB_API_KEY = process.env.TMDB_API_KEY;
 
 // Simple in-memory cache for genres
 let movieGenresCache: TMDBGenre[] | null = null;
 let tvGenresCache: TMDBGenre[] | null = null;
 
 async function fetchFromTMDB<T>(endpoint: string, params: Record<string, string> = {}): Promise<T> {
+  const TMDB_API_KEY = process.env.TMDB_API_KEY;
   if (!TMDB_API_KEY) {
     throw new Error("TMDB_API_KEY is not configured");
   }
