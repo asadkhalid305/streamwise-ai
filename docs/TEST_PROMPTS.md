@@ -1,147 +1,70 @@
 # Test Prompts for Multi-Agent Movie Picker
 
-Minimal test cases covering all agents and guardrails without repetition.
+This document contains a list of test prompts designed to verify the robustness of the multi-agent system, specifically targeting edge cases, complex logic, and recent fixes.
 
----
+## 1. Genre Mapping & TV Show Specifics
+*These tests verify that the system correctly maps common terms to TMDB's specific TV genres (e.g., "Thriller" -> "Mystery").*
 
-## Greeting Agent ✅
+- **"I want a thriller TV show."**
+    - *Expected:* Finds shows tagged with "Mystery" or "Crime" (e.g., *Sherlock*, *Black Mirror*).
+- **"Show me some sci-fi series."**
+    - *Expected:* Maps "Sci-Fi" to "Sci-Fi & Fantasy" and returns relevant shows.
+- **"I need an action show for my flight."**
+    - *Expected:* Maps "Action" to "Action & Adventure".
+- **"Do you have any war shows?"**
+    - *Expected:* Maps "War" to "War & Politics".
 
-| Prompt                       | Expected                   |
-| ---------------------------- | -------------------------- |
-| "hi"                         | Friendly greeting response |
-| "how are you?"               | Friendly greeting response |
-| "hey, what can you do?"      | Friendly greeting response |
-| "hi, I want an action movie" | Route to Parser Agent      |
+## 2. Advanced Filters (New)
+*Verify the new semantic search capabilities: Person, Year, Language, etc.*
 
----
+- **"Action movies with Tom Cruise released after 2010."**
+    - *Expected:* Returns movies starring Tom Cruise from 2011 onwards (e.g., *Top Gun: Maverick*).
+- **"French comedy movies from the 90s."**
+    - *Expected:* Returns French-language comedies released between 1990-1999.
+- **"Highest rated sci-fi shows of all time."**
+    - *Expected:* Returns top-rated Sci-Fi TV shows (e.g., *Arcane*, *Firefly*).
+- **"Movies directed by Christopher Nolan."**
+    - *Expected:* Returns films like *Inception*, *Oppenheimer*, etc.
 
-## Parser Agent
+## 3. Runtime & Fallback Logic
+*These tests verify the runtime filtering and the fix for "0 minute" episodes.*
 
-### Basic Requests ✅
+- **"Give me a thriller show with episodes under 60 minutes."**
+    - *Expected:* Returns shows where `episode_run_time` or `last_episode_to_air.runtime` is < 60.
+- **"I have 30 minutes. What can I watch?"**
+    - *Expected:* Returns short items (Movies or TV episodes under 30m).
 
-| Prompt                     | Expected                           |
-| -------------------------- | ---------------------------------- |
-| "I want a comedy movie"    | Parse: type=movie, genres=[Comedy] |
-| "Show me action shows"     | Parse: type=show, genres=[Action]  |
-| "Something funny to watch" | Parse: type=any, genres=[Comedy]   |
+## 4. Complex "OR" Logic
+*These tests verify the Parser Agent's ability to split complex requests into multiple tool calls and merge results.*
 
-### With Constraints ✅
+- **"I want an action movie or a comedy show."**
+    - *Expected:*
+        - Call 1: Type=Movie, Genre=Action
+        - Call 2: Type=Show, Genre=Comedy
+        - Result: A mix of both in the final list.
+- **"Horror movies or sci-fi series please."**
+    - *Expected:* Mix of Horror movies and Sci-Fi & Fantasy shows.
 
-| Prompt                                   | Expected                                |
-| ---------------------------------------- | --------------------------------------- |
-| "I want a movie under 2 hours"           | Parse: type=movie, timeLimitMinutes=120 |
-| "TV show with episodes under 30 minutes" | Parse: type=show, timeLimitMinutes=30   |
+## 5. UI & Volume (Updated)
+*Verify the system returns the correct volume of results.*
 
-### AND Logic (Single Call) ✅
+- **"Recommend me popular action movies."**
+    - *Expected:* Should return exactly **12 items** (or multiple of 2) to fill the UI rows perfectly.
+- **"List all the comedy shows you can find."**
+    - *Expected:* Should fill the list up to the fetch limit (20) without arbitrary capping below 12.
 
-| Prompt                          | Expected                                   |
-| ------------------------------- | ------------------------------------------ |
-| "I want an action comedy movie" | Parse: type=movie, genres=[Action, Comedy] |
-| "romantic drama show"           | Parse: type=show, genres=[Romance, Drama]  |
+## 6. Agent Handoffs & Safety
+*These tests verify the guardrails and agent routing.*
 
-### OR Logic (Multiple Calls) ✅
+- **"Hi, how are you?"**
+    - *Expected:* Handled by `GreetingAgent`. No recommendations, just a chat.
+- **"Help me cook pasta."**
+    - *Expected:* Handled by `OutOfScopeAgent`. Polite refusal.
+- **"I want a movie with [inappropriate term]."**
+    - *Expected:* Blocked by `InputGuardrail`. API returns 400.
 
-| Prompt                                      | Expected                                                                                |
-| ------------------------------------------- | --------------------------------------------------------------------------------------- |
-| "action movie OR comedy show"               | Call 1: type=movie, genres=[Action] + Call 2: type=show, genres=[Comedy], merge results |
-| "horror films OR sci-fi series"             | Call 1: type=movie, genres=[Horror] + Call 2: type=show, genres=[Sci-Fi], merge results |
-| "action movie under 2 hours OR comedy show" | Multiple calls with time constraints, merge results                                     |
-| "action OR comedy movies"                   | Single call: type=movie, genres=[Action, Comedy]                                        |
-
-### No Results ❌
-
-| Prompt                                                 | Expected                                              |
-| ------------------------------------------------------ | ----------------------------------------------------- |
-| "I want a movie under 10 minutes"                      | Return: "No movies or shows matched your preferences" |
-| "I want a horror romance comedy sci-fi action western" | Return: "No movies or shows matched your preferences" |
-
----
-
-## Out of Scope Agent ✅
-
-| Prompt                   | Expected              |
-| ------------------------ | --------------------- |
-| "What's the weather?"    | Out of scope response |
-| "Tell me a joke"         | Out of scope response |
-| "How do I cook pasta?"   | Out of scope response |
-| "Help with math problem" | Out of scope response |
-
----
-
-## Input Guardrail
-
-### Safe Content ✅
-
-| Prompt                            | Expected         |
-| --------------------------------- | ---------------- |
-| "I want an action movie"          | Proceed normally |
-| "Show me family-friendly content" | Proceed normally |
-| "Find me R-rated thrillers"       | Proceed normally |
-
-### Harmful Content ❌
-
-| Prompt                                          | Expected                            |
-| ----------------------------------------------- | ----------------------------------- |
-| [Hate speech/slurs]                             | Trigger guardrail, return 400 error |
-| "Show me extreme violence for harmful purposes" | Trigger guardrail, return 400 error |
-| [Sexually explicit content]                     | Trigger guardrail, return 400 error |
-
----
-
-## Output Guardrail
-
-### Valid Output ✅
-
-| Scenario                                          | Expected                                                      |
-| ------------------------------------------------- | ------------------------------------------------------------- |
-| Multiple recommendations with all required fields | Pass (name, type, genres, year, ageRating, rank, explanation) |
-| Empty recommendations array                       | Pass: `{"recommendations": []}`                               |
-| Text response from greeting/out-of-scope agent    | Pass (non-JSON)                                               |
-
-### Invalid Output ❌
-
-| Scenario                            | Expected                                                    |
-| ----------------------------------- | ----------------------------------------------------------- |
-| Recommendation missing "name" field | Trigger guardrail, return 500 error                         |
-| Recommendation missing "type" field | Trigger guardrail, return 500 error                         |
-| More than 10 recommendations        | Trigger guardrail, return 500 error                         |
-| Hallucinated titles not in catalog  | Trigger guardrail (ranker should only use provided results) |
-
----
-
-## Edge Cases
-
-| Prompt                                             | Expected                                                        |
-| -------------------------------------------------- | --------------------------------------------------------------- |
-| "" (empty input)                                   | Return 400 error                                                |
-| "!@#$%^&\*()"                                      | Route to out-of-scope or fail gracefully                        |
-| "I want to watch something"                        | Should either ask for clarification or search with type=any     |
-| "I want a comdy movie"                             | Agent should understand "comedy" via AI reasoning               |
-| Very long request with multiple genres/constraints | Parse correctly without errors                                  |
-| "I want a comedy horror movie under 30 minutes"    | Return no results (unlikely to exist) or return closest matches |
-
----
-
-## Testing Workflow
-
-```bash
-npm run dev
-```
-
-1. Test greetings first (simple routing)
-2. Test basic parser requests (single tool calls)
-3. Test AND logic (multiple genres, same type)
-4. Test OR logic with different types (multiple tool calls) ← **Main fix validation**
-5. Test guardrails (harmful content)
-6. Test edge cases
-
-✅ Success: No "Internal server error" for valid inputs, proper routing, OR logic works
-
----
-
-## Notes
-
-- OR logic across different types now supported via multiple tool calls + merge
-- AND logic within same type works via single tool call with multiple genres
-- Guardrails validate both input (safety) and output (structure)
-- All agents are intelligent and handle natural language variations
+## 7. Edge Cases
+- **"I want a western."** (Ambiguous type)
+    - *Expected:* Returns both Western Movies and Western TV shows.
+- **"Surprise me."**
+    - *Expected:* Should default to "Any" type and likely no specific genre.

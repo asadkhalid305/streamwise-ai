@@ -38,15 +38,17 @@ Build the entire system yourself, step-by-step, with guided instructions.
 
 > "I have a 1-hour flight. Something light and funny."
 
-> "Movie night for 5 people. No horror, not too heavy."
+> "Action movies from the 90s with Tom Cruise."
 
-> "I'm in the mood for something critically acclaimed I haven't seen."
+> "High-rated Korean dramas released this year."
 
-The system understands your intent, extracts constraints (time, genre, mood), searches a curated catalog, and returns personalized recommendations with clear explanations of why each one fits your request.
+The system understands your intent, extracts constraints (time, genre, era, cast, language), searches the live TMDB database, and returns personalized recommendations with clear explanations of why each one fits your request.
 
 ### Key Features
 
 - **Natural Language Understanding** - Describe what you want in plain English
+- **Deep Semantic Search** - Filter by Actor, Director, Year, Language, Rating, and more
+- **Real-Time Data** - Connects directly to TMDB API for the latest movies and shows
 - **Context-Aware** - Understands time constraints, mood preferences, and group dynamics
 - **Multi-Agent Architecture** - Specialized agents handle classification, parsing, ranking, and validation
 - **Intelligent Ranking** - Results sorted by relevance with personalized explanations
@@ -60,12 +62,12 @@ The system understands your intent, extracts constraints (time, genre, mood), se
 The system uses a **multi-agent architecture** powered by the [OpenAI Agents SDK](https://openai.github.io/openai-agents-js/), where specialized AI agents collaborate:
 
 1. **Classification Agent** - Determines intent (greeting, recommendation, or out-of-scope)
-2. **Parser Agent** - Extracts preferences (genre, type, time limits) and searches the catalog
+2. **Parser Agent** - Extracts preferences (genre, type, year, cast, etc.) and searches TMDB
 3. **Ranker Agent** - Sorts results by relevance and generates personalized explanations
 4. **Greeting Agent** - Handles conversational greetings
 5. **Out-of-Scope Agent** - Politely declines unrelated requests
 
-Each agent has one clear responsibility, uses pre-defined instructions, and can hand off control to other agents. The parser agent uses a **catalog search tool** (a deterministic function) to query the movie/show database. **Input and output guardrails** validate content at system boundaries.
+Each agent has one clear responsibility, uses pre-defined instructions, and can hand off control to other agents. The parser agent uses a **catalog search tool** (a deterministic function) to query the **The Movie Database (TMDB) API**. **Input and output guardrails** validate content at system boundaries.
 
 **Learn more:** See [CONCEPTS.md](docs/CONCEPTS.md) for detailed explanations and [ARCHITECTURE.md](docs/ARCHITECTURE.md) for system design.
 
@@ -352,17 +354,17 @@ src/
         inputGuardrail.ts       # Validates user input for safety
         outputGuardrail.ts      # Validates agent output for quality
       instructions.ts           # Agent instructions (behavior definitions)
-      util/helpers.ts           # Helper functions (search logic)
   components/
     MovieCard.tsx               # UI component for recommendations
     ApiKeyModal.tsx             # Modal for API key input
   contexts/
     ApiKeyContext.tsx           # API key state management
-  data/
-    catalog.json                # Movie and show database (220 items)
+  services/
+    tmdb.ts                     # TMDB API integration service
   types/
     agent.ts                    # Agent-related types
     api.ts                      # API types
+    tmdb.ts                     # TMDB API response types
 docs/
   CONCEPTS.md                   # Multi-agent concepts explained
   ARCHITECTURE.md               # System design deep-dive

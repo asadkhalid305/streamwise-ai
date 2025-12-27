@@ -55,9 +55,9 @@ export const outputValidationGuardrail: OutputGuardrail = {
         }
 
         // Check for reasonable number of recommendations
-        if (recommendations.length > 10) {
+        if (recommendations.length > 25) {
           tripwireTriggered = true;
-          reason = "Too many recommendations (max 10)";
+          reason = "Too many recommendations (max 25)";
         }
       }
     } catch (error) {

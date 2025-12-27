@@ -46,7 +46,12 @@ export const formatResponse = (result: any): RecommendResponse => {
           }));
 
           // For ranker agent, use a friendly message instead of raw JSON
-          output = `Here are my top ${items.length} recommendations for you:`;
+          if (items.length > 0) {
+            output = `Here are my top ${items.length} recommendations for you:`;
+          } else {
+            output =
+              "I couldn't find any recommendations matching your exact criteria. You might try broadening your search.";
+          }
         }
         // Handle Parser Agent output format (if it ever returns without handoff): [...]
         else if (Array.isArray(parsed) && parsed.length > 0) {
