@@ -9,15 +9,12 @@ import { searchTMDBCatalog } from "@/services/tmdb";
  * search functionality. It filters the catalog based on:
  * - Type preference (movie, show, or any)
  * - Genres (must include at least one)
- * - Time constraints (runtime limit in minutes)
- *
- * The actual search logic is in searchCatalog() helper function, which can
- * be replaced with API calls, database queries, or other implementations.
- *
- * @param typePreference - "movie", "show", or "any"
- * @param genresInclude - Array of genre names (e.g., ["Comedy", "Action"])
- * @param timeLimitMinutes - Maximum runtime in minutes, or null for no limit
- * @returns Array of matching catalog items
+ * - Time constraints
+ * - Year/Era
+ * - Rating
+ * - People (Cast/Crew)
+ * - Language
+ * - Sorting
  */
 export const catalogSearchTool = tool({
   name: "search_catalog",
@@ -25,7 +22,6 @@ export const catalogSearchTool = tool({
     "Search the movie and TV show catalog based on user preferences. Returns a filtered list of items matching the criteria.",
 
   // Zod Schema: Define and validate tool parameters
-  // OpenAI SDK uses this to understand what parameters the tool accepts
   parameters: z.object({
     typePreference: z
       .enum(["movie", "show", "any"])
@@ -39,12 +35,23 @@ export const catalogSearchTool = tool({
       .describe(
         "Maximum runtime in minutes for movies or episode runtime for shows"
       ),
+    year: z.number().nullable().describe("Exact release year"),
+    minYear: z.number().nullable().describe("Minimum release year (start of range)"),
+    maxYear: z.number().nullable().describe("Maximum release year (end of range)"),
+    minRating: z.number().nullable().describe("Minimum TMDB vote average (0-10)"),
+    language: z.string().nullable().describe("ISO-639-1 language code (e.g. 'fr', 'ko', 'en')"),
+    actors: z.array(z.string()).nullable().describe("List of actor names to include"),
+    directors: z.array(z.string()).nullable().describe("List of director names to include"),
+    sortBy: z
+      .enum(["popularity", "newest", "top_rated"])
+      .nullable()
+      .describe("Sort order for results"),
   }),
 
   // Execute: The actual tool implementation
-  // This is where you'd call external APIs, databases, etc.
   execute: async (query) => {
     const results = await searchTMDBCatalog(query);
+    console.log(`[Tool:search_catalog] Found ${results.length} items for Ranker`);
     return results;
   },
 });

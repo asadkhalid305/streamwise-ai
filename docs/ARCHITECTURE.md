@@ -67,8 +67,8 @@ The system follows a **layered architecture** with clear separation of concerns:
                             ↕ Data Access
 ┌─────────────────────────────────────────────────────────────┐
 │                     Data Layer                              │
-│  - catalog.json (Movie/Show Database)                     │
-│  - searchCatalog() Helper Function                        │
+│  - TMDB API (External Service)                            │
+│  - src/services/tmdb.ts (API Client)                      │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -114,7 +114,7 @@ The system follows a **layered architecture** with clear separation of concerns:
                                   ↓
                                   Use catalogSearchTool
                                   ↓
-                                  - Search catalog.json
+                                  - Query TMDB API
                                   - Filter by type & genres
                                   - Apply time constraint
                                   ↓
@@ -129,7 +129,7 @@ The system follows a **layered architecture** with clear separation of concerns:
                                   - Validate JSON structure
                                   - Check required fields
                                   - Verify no hallucinations
-                                  - Ensure ≤ 10 recommendations
+                                  - Ensure ≤ 12 recommendations
                                   - If fails → Return 500 error
 
 6. FORMAT RESPONSE
@@ -401,14 +401,13 @@ Request → [Input Guardrail] → Agent System → [Output Guardrail] → Respon
 | File                   | Responsibility                                |
 | ---------------------- | --------------------------------------------- |
 | `instructions.ts`      | Agent instructions (behavior definitions)     |
-| `helpers.ts`           | Search logic, utility functions               |
 | `responseFormatter.ts` | Transform agent output to API response format |
 
 ### Data
 
-| File           | Responsibility                      |
-| -------------- | ----------------------------------- |
-| `catalog.json` | Movie and show database (220 items) |
+| File               | Responsibility                  |
+| ------------------ | ------------------------------- |
+| `src/services/tmdb.ts` | TMDB API client & search logic |
 
 ### Types
 
@@ -416,6 +415,7 @@ Request → [Input Guardrail] → Agent System → [Output Guardrail] → Respon
 | ---------- | ----------------------------------- |
 | `agent.ts` | Agent-related TypeScript interfaces |
 | `api.ts`   | API request/response types          |
+| `tmdb.ts`  | TMDB API response types             |
 
 ---
 

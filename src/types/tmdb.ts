@@ -37,6 +37,8 @@ export interface TMDBMovieDetails {
   runtime: number;
   genres: TMDBGenre[];
   release_date: string;
+  vote_average: number;
+  vote_count: number;
   release_dates: {
     results: {
       iso_3166_1: string;
@@ -54,6 +56,8 @@ export interface TMDBTVDetails {
   genres: TMDBGenre[];
   first_air_date: string;
   number_of_seasons: number;
+  vote_average: number;
+  vote_count: number;
   content_ratings: {
     results: {
       iso_3166_1: string;
@@ -63,4 +67,15 @@ export interface TMDBTVDetails {
   last_episode_to_air?: {
     runtime?: number;
   };
+}
+
+export interface TMDBPersonResult {
+  id: number;
+  name: string;
+  known_for_department: string;
+}
+
+export interface TMDBPersonSearchResponse {
+  page: number;
+  results: TMDBPersonResult[];
 }

@@ -4,6 +4,15 @@ export interface PreferenceQuery {
   typePreference: "movie" | "show" | "any";
   genresInclude: string[];
   timeLimitMinutes: number | null;
+  // New filters - can be null coming from tool
+  year?: number | null;
+  minYear?: number | null;
+  maxYear?: number | null;
+  minRating?: number | null;
+  language?: string | null; // ISO-639-1 code
+  actors?: string[] | null;
+  directors?: string[] | null;
+  sortBy?: "popularity" | "newest" | "top_rated" | null;
 }
 
 export interface CatalogItem {
@@ -15,6 +24,8 @@ export interface CatalogItem {
   year: number;
   seasons?: number;
   ageRating: string;
+  rating?: number;
+  voteCount?: number;
 }
 
 export interface RankedRecommendation {
@@ -25,6 +36,8 @@ export interface RankedRecommendation {
   genres: string[];
   year: number;
   ageRating: string;
+  rating?: number;
+  voteCount?: number;
   rank: number;
   explanation: string;
 }
