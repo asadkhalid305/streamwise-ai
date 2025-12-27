@@ -1,6 +1,6 @@
 import { tool } from "@openai/agents";
 import { z } from "zod";
-import { searchCatalog } from "../util/helpers";
+import { searchTMDBCatalog } from "@/services/tmdb";
 
 /**
  * Catalog Search Tool - Search for movies and shows based on user preferences
@@ -44,7 +44,7 @@ export const catalogSearchTool = tool({
   // Execute: The actual tool implementation
   // This is where you'd call external APIs, databases, etc.
   execute: async (query) => {
-    const results = searchCatalog(query);
+    const results = await searchTMDBCatalog(query);
     return results;
   },
 });
