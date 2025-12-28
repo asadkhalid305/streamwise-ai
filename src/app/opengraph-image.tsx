@@ -69,7 +69,7 @@ export default async function Image() {
             </svg>
             <div style={{ display: "flex", flexDirection: "column" }}>
                 <h1 style={{ fontSize: 64, fontWeight: "bold", margin: 0, lineHeight: 1 }}>
-                    StreamWise
+                    StreamWise AI
                 </h1>
                 <h2 style={{ fontSize: 32, fontWeight: "normal", margin: 0, opacity: 0.8, marginTop: 10 }}>
                     Intelligent Entertainment Curator

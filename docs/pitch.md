@@ -1,4 +1,4 @@
-# PITCH: StreamWise
+# PITCH: StreamWise AI
 
 _End decision fatigue. Get personalized recommendations in seconds._
 
@@ -18,7 +18,7 @@ Scrolling endlessly through Netflix, asking friends, or reading reviews usually 
 
 ## The Solution
 
-**StreamWise** removes the friction from choosing what to watch.
+**StreamWise AI** removes the friction from choosing what to watch.
 
 Instead of clicking filters or reading reviews, you simply describe what you want:
 
@@ -34,7 +34,7 @@ It's like having a knowledgeable friend who knows your taste and understands the
 
 ## Why It Works
 
-StreamWise doesn't just match keywords. It understands:
+StreamWise AI doesn't just match keywords. It understands:
 
 - **Intent** - Are you looking for an escape? A group experience? A hidden gem?
 - **Constraints** - How much time do you have? Who's watching with you? What are you in the mood for?
@@ -56,7 +56,7 @@ Streaming platforms have solved distribution. What they haven't solved is discov
 
 Recommendation engines either show you what's popular (not what's right for you) or ask you to endlessly refine filters (which puts the work on the user).
 
-StreamWise solves this by combining intelligence with simplicity — understanding context and delivering personalized suggestions without the friction.
+StreamWise AI solves this by combining intelligence with simplicity — understanding context and delivering personalized suggestions without the friction.
 
 ## The Experience
 
@@ -73,7 +73,7 @@ Clear, personalized, and instantly actionable.
 
 ## The Vision
 
-Today, StreamWise runs on a curated catalog of movies and shows.
+Today, StreamWise AI runs on a curated catalog of movies and shows.
 
 Tomorrow, the same experience can power:
 
@@ -86,8 +86,8 @@ The core insight scales — intelligent discovery without friction.
 
 ## Why It Matters
 
-StreamWise isn't really about movies.
+StreamWise AI isn't really about movies.
 
 It's about respecting user time and intelligence. It's about understanding that good recommendations require context, not just data. It's about building products that anticipate needs instead of forcing users to spell them out.
 
-In a world of infinite content and finite time, **StreamWise is the shortcut back to actually enjoying what you watch.**
+In a world of infinite content and finite time, **StreamWise AI is the shortcut back to actually enjoying what you watch.**

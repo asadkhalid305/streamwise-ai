@@ -6,7 +6,13 @@ import MovieCard from "@/components/MovieCard";
 import ApiKeyModal from "@/components/ApiKeyModal";
 import ResponseMetadata from "@/components/ResponseMetadata";
 import { useApiKey } from "@/contexts/ApiKeyContext";
-import { CornerDownLeft, Loader, Key as KeyIcon, ChevronDown, X } from "lucide-react";
+import {
+  CornerDownLeft,
+  Loader,
+  Key as KeyIcon,
+  ChevronDown,
+  X,
+} from "lucide-react";
 
 export default function Home() {
   const [message, setMessage] = useState("");
@@ -31,7 +37,10 @@ export default function Home() {
     if (response && resultsRef.current) {
       // Small timeout to allow render
       setTimeout(() => {
-        resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        resultsRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
       }, 100);
     }
   }, [response]);
@@ -75,12 +84,17 @@ export default function Home() {
       // Check content type to safely handle non-JSON errors (e.g. 404 HTML pages)
       const contentType = res.headers.get("content-type");
       let data;
-      
+
       if (contentType && contentType.includes("application/json")) {
         data = await res.json();
       } else {
         const text = await res.text();
-        throw new Error(`Server returned ${res.status} ${res.statusText}: ${text.substring(0, 100)}...`);
+        throw new Error(
+          `Server returned ${res.status} ${res.statusText}: ${text.substring(
+            0,
+            100
+          )}...`
+        );
       }
 
       if (!res.ok) {
@@ -150,7 +164,7 @@ export default function Home() {
               <img src="/logo.svg" alt="Logo" className="w-16 h-16" />
             </div>
             <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-              StreamWise
+              StreamWise AI
             </h1>
             <p className="text-gray-600 dark:text-gray-400">
               Tell us what you&apos;re looking for, and we&apos;ll recommend
@@ -257,9 +271,11 @@ export default function Home() {
                     Recommendations
                   </h2>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {response.items.slice(0, visibleCount).map((item: RecommendItem, index: number) => (
-                      <MovieCard key={index} item={item} index={index} />
-                    ))}
+                    {response.items
+                      .slice(0, visibleCount)
+                      .map((item: RecommendItem, index: number) => (
+                        <MovieCard key={index} item={item} index={index} />
+                      ))}
                   </div>
 
                   {/* Load More Button */}

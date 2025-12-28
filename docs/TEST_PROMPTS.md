@@ -1,4 +1,4 @@
-# Test Prompts for StreamWise
+# Test Prompts for StreamWise AI
 
 This document contains a list of test prompts designed to verify the robustness of the multi-agent system, specifically targeting edge cases, complex logic, and recent fixes.
 

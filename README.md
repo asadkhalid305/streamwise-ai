@@ -1,4 +1,4 @@
-# StreamWise
+# StreamWise AI
 
 _A production-ready Next.js application AND comprehensive learning resource for building multi-agent AI systems._
 
@@ -34,7 +34,7 @@ Build the entire system yourself, step-by-step, with guided instructions.
 
 ## What It Does
 
-**StreamWise** removes the friction from choosing what to watch. Instead of clicking through endless filters or scrolling for 30 minutes, simply describe what you want:
+**StreamWise AI** removes the friction from choosing what to watch. Instead of clicking through endless filters or scrolling for 30 minutes, simply describe what you want:
 
 > "I have a 1-hour flight. Something light and funny."
 
@@ -380,7 +380,7 @@ tests/
 
 ## Why This Matters
 
-**StreamWise** demonstrates how to build intelligent systems that:
+**StreamWise AI** demonstrates how to build intelligent systems that:
 
 - **Respect user time** - No endless scrolling or filter clicking
 - **Understand context** - Not just keywords, but intent and constraints
