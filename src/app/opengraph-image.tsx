@@ -4,7 +4,7 @@ import { ImageResponse } from "next/og";
 export const runtime = "edge";
 
 // Image metadata
-export const alt = "Multi-Agent Movie Picker";
+export const alt = "StreamWise AI - Intelligent Curator";
 export const size = {
   width: 1200,
   height: 630,
@@ -69,10 +69,10 @@ export default async function Image() {
             </svg>
             <div style={{ display: "flex", flexDirection: "column" }}>
                 <h1 style={{ fontSize: 64, fontWeight: "bold", margin: 0, lineHeight: 1 }}>
-                    Movie Picker
+                    StreamWise
                 </h1>
                 <h2 style={{ fontSize: 32, fontWeight: "normal", margin: 0, opacity: 0.8, marginTop: 10 }}>
-                    Multi-Agent AI Recommender
+                    Intelligent Entertainment Curator
                 </h2>
             </div>
         </div>

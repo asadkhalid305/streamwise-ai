@@ -1,7 +1,7 @@
 {
-  "name": "multi-agent-movie-picker",
+  "name": "streamwise-ai",
   "version": "0.1.0",
-  "description": "A production-ready Next.js app and comprehensive learning resource for building multi-agent AI systems using the OpenAI Agents SDK. Features intelligent movie/show recommendations through specialized agent orchestration.",
+  "description": "An autonomous multi-agent system that deeply understands your taste to discover the perfect movies and TV shows.",
   "private": true,
   "scripts": {
     "dev": "next dev",

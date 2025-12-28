@@ -1,4 +1,4 @@
-# Multi-Agent Movie Recommendation System
+# StreamWise
 
 _A production-ready Next.js application AND comprehensive learning resource for building multi-agent AI systems._
 
@@ -34,7 +34,7 @@ Build the entire system yourself, step-by-step, with guided instructions.
 
 ## What It Does
 
-**Movie & Show Picker** removes the friction from choosing what to watch. Instead of clicking through endless filters or scrolling for 30 minutes, simply describe what you want:
+**StreamWise** removes the friction from choosing what to watch. Instead of clicking through endless filters or scrolling for 30 minutes, simply describe what you want:
 
 > "I have a 1-hour flight. Something light and funny."
 
@@ -85,8 +85,8 @@ Each agent has one clear responsibility, uses pre-defined instructions, and can 
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/multi-agent-movie-picker.git
-cd multi-agent-movie-picker
+git clone https://github.com/yourusername/streamwise-ai.git
+cd streamwise-ai
 
 # Install dependencies
 npm install
@@ -120,7 +120,7 @@ This app is designed for seamless deployment on Vercel (or similar platforms tha
 
 **Quick Deploy:**
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/multi-agent-movie-picker)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/streamwise-ai)
 
 **Manual Deployment:**
 
@@ -380,7 +380,7 @@ tests/
 
 ## Why This Matters
 
-Movie & Show Picker demonstrates how to build intelligent systems that:
+**StreamWise** demonstrates how to build intelligent systems that:
 
 - **Respect user time** - No endless scrolling or filter clicking
 - **Understand context** - Not just keywords, but intent and constraints

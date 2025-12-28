@@ -4,9 +4,9 @@ import ThemeToggle from "./ThemeScript";
 import { ApiKeyProvider } from "@/contexts/ApiKeyContext";
 
 export const metadata: Metadata = {
-  title: "Movie & Show Picker",
+  title: "StreamWise AI | Intelligent Entertainment Curator",
   description:
-    "A multi-agent AI system that recommends movies & shows based on natural language requests",
+    "An autonomous multi-agent system that interprets natural language to discover the perfect movies and TV shows.",
 };
 
 export default function RootLayout({

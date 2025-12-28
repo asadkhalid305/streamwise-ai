@@ -1,12 +1,12 @@
-# Gemini Context for Multi-Agent Movie Picker
+# Gemini Context for StreamWise
 
 This file provides context for AI agents interacting with this codebase.
 
 ## Project Overview
 
-**Name:** Multi-Agent Movie Picker
+**Name:** StreamWise
 **Type:** Next.js Application (TypeScript)
-**Purpose:** An intelligent movie and TV show recommendation engine powered by a multi-agent AI system. It interprets natural language user requests to query the TMDB (The Movie Database) API and return personalized results.
+**Purpose:** An autonomous multi-agent system that interprets natural language to discover the perfect movies and TV shows using the TMDB API.
 
 ### Key Technologies
 - **Framework:** Next.js 15 (App Router)

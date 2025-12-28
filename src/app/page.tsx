@@ -150,7 +150,7 @@ export default function Home() {
               <img src="/logo.svg" alt="Logo" className="w-16 h-16" />
             </div>
             <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-              Movie & Show Picker
+              StreamWise
             </h1>
             <p className="text-gray-600 dark:text-gray-400">
               Tell us what you&apos;re looking for, and we&apos;ll recommend

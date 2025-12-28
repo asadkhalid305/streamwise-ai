@@ -1,8 +1,7 @@
 {
   "info": {
-    "name": "Multi-Agent Movie Picker API",
-    "description": "Test collection for the movie recommendation API covering greeting, movie recommendation, and out-of-scope intents with positive and negative cases",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"name": "StreamWise API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
   },
   "item": [
     {
