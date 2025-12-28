@@ -6,6 +6,7 @@ export const executeMultiAgentSystem = async (
   apiKey?: string
 ) => {
   // If a custom API key is provided, set it as the default
+  // Otherwise, the SDK will use OPENAI_API_KEY from environment
   if (apiKey) {
     setDefaultOpenAIKey(apiKey);
   }
