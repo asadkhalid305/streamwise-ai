@@ -17,35 +17,27 @@ export const catalogSearchTool = tool({
   parameters: z.object({
     typePreference: z
       .enum(["movie", "show", "any"])
-      .describe("The type of content the user is looking for (movie, show, or any)."),
+      .describe("Type of content to search for"),
     genresInclude: z
       .array(z.string())
-      .describe("List of genre names to include (e.g., ['Action', 'Comedy'])."),
+      .describe("Genres that must be present (at least one)"),
     timeLimitMinutes: z
       .number()
       .nullable()
-      .optional()
-      .describe("Maximum runtime or episode duration in minutes."),
-    year: z.number().nullable().optional().describe("A specific release year."),
-    minYear: z.number().nullable().optional().describe("Minimum release year."),
-    maxYear: z.number().nullable().optional().describe("Maximum release year."),
-    minRating: z.number().nullable().optional().describe("Minimum user rating (0-10)."),
-    language: z
-      .string()
-      .nullable()
-      .optional()
-      .describe("ISO-639-1 language code (e.g., 'en', 'fr')."),
-    actors: z.array(z.string()).nullable().optional().describe("List of actors to include."),
-    directors: z
-      .array(z.string())
-      .nullable()
-      .optional()
-      .describe("List of directors to include."),
+      .describe(
+        "Maximum runtime in minutes for movies or episode runtime for shows"
+      ),
+    year: z.number().nullable().describe("Exact release year"),
+    minYear: z.number().nullable().describe("Minimum release year (start of range)"),
+    maxYear: z.number().nullable().describe("Maximum release year (end of range)"),
+    minRating: z.number().nullable().describe("Minimum TMDB vote average (0-10)"),
+    language: z.string().nullable().describe("ISO-639-1 language code (e.g. 'fr', 'ko', 'en')"),
+    actors: z.array(z.string()).nullable().describe("List of actor names to include"),
+    directors: z.array(z.string()).nullable().describe("List of director names to include"),
     sortBy: z
       .enum(["popularity", "newest", "top_rated"])
       .nullable()
-      .optional()
-      .describe("How to sort the results."),
+      .describe("Sort order for results"),
   }),
 
   // Execute: The actual tool implementation
