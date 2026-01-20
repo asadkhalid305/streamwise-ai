@@ -12,7 +12,11 @@ export default function ResponseMetadata({ metadata }: ResponseMetadataProps) {
         
         {/* Logo & Model Info */}
         <div className="flex items-center gap-4">
-          <img src="/logo.svg" alt="Logo" className="w-6 h-6 hidden xs:block" />
+          <img 
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logo.svg`} 
+            alt="Logo" 
+            className="w-6 h-6 hidden xs:block" 
+          />
           <div className="flex items-center gap-2">
             <span className="text-gray-500 dark:text-gray-400 font-medium">Model:</span>
             <span className="font-mono text-gray-900 dark:text-gray-100 bg-gray-100 dark:bg-[#1A1A1A] px-2 py-0.5 rounded">

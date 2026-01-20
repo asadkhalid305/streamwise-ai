@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/apps/streamwise-ai",
+      "permanent": false
+    }
+  ]
+}
